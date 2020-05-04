@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
+from phonenumber_field.modelfields import PhoneNumberField
 
 
 class Flat(models.Model):
@@ -24,7 +25,7 @@ class Flat(models.Model):
     active = models.BooleanField("Активно-ли объявление", db_index=True)
     construction_year = models.IntegerField("Год постройки здания", null=True, blank=True, db_index=True)
     liked_by = models.ManyToManyField(User, related_name='liked_flat', null=True, blank=True, verbose_name="Кто лайкнул")
-
+    owner_phone_pure = PhoneNumberField(blank=True)
 
 
     def __str__(self):
