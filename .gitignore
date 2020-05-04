@@ -4,4 +4,4 @@ venv/*
 db.sqlite3
 */__pycache__/*
 _init_.py
-README.md
+README.mdgit commiy
