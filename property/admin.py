@@ -13,9 +13,9 @@ class FlatAdmin(admin.ModelAdmin):
 
 
 class ComplaintAdmin(admin.ModelAdmin):
-    raw_id_fields = ('flat', 'user')
-    search_fields = ['user', 'flat']
-    list_display = ['user', 'flat']
+    raw_id_fields = ('flat', 'complainer')
+    search_fields = ['complainer', 'flat']
+    list_display = ['complainer', 'flat']
 
 
 class OwnerAdmin(admin.ModelAdmin):
