@@ -7,8 +7,7 @@ def add_flat_owner(apps, schema_editor):
     Flat = apps.get_model('property', 'Flat')
     Owner = apps.get_model('property', 'Owner')
     for flat in Flat.objects.all():
-        owners = Owner.objects.filter(owner=flat.owner, owner_phone_pure=flat.owner_phone_pure)
-        owner = owners[0]
+        owner = Owner.objects.filter(owner=flat.owner, owner_phone_pure=flat.owner_phone_pure)
         owner.flat.add(flat)
 
 
