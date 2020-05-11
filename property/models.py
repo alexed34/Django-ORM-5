@@ -24,8 +24,7 @@ class Flat(models.Model):
     has_balcony = models.NullBooleanField("Наличие балкона", choices=have_balcony)
     active = models.BooleanField("Активно-ли объявление", db_index=True)
     construction_year = models.IntegerField("Год постройки здания", null=True, blank=True, db_index=True)
-    liked_by = models.ManyToManyField(User, related_name='liked_flats', null=True, blank=True,
-                                      verbose_name="Кто лайкнул")
+    liked_by = models.ManyToManyField(User, related_name='liked_flats', blank=True, verbose_name="Кто лайкнул")
 
     def __str__(self):
         return f"{self.town}, {self.address}, ({self.price}р.)"
@@ -43,6 +42,5 @@ class Owner(models.Model):
     owner = models.CharField("ФИО владельца", max_length=200, null=True, db_index=True)
     owners_phonenumber = models.CharField("Номер владельца", max_length=20, null=True)
     owner_phone_pure = PhoneNumberField("Нормализованный номер владельца", blank=True)
-    flat = models.ManyToManyField(Flat, related_name='owner_flats', null=True,
-                                  verbose_name="Квартиры в собственности", db_index=True)
+    flat = models.ManyToManyField(Flat, related_name='owner_flats', blank=True, verbose_name="Квартиры в собственности")
 
