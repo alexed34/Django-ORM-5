@@ -6,4 +6,4 @@ db.sqlite3
 _init_.py
 README.md
 temp.py
-property/migrations/__pycache__/*
+__pycache__/
