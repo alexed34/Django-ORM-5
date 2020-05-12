@@ -20,7 +20,7 @@ class ComplaintAdmin(admin.ModelAdmin):
 
 class OwnerAdmin(admin.ModelAdmin):
     search_fields = ['owner', 'id']
-    raw_id_fields = ['flat']
+    raw_id_fields = ['flats']
     list_display = ('id', 'owner', 'owner_phone_pure')
 
 

@@ -3,19 +3,16 @@
 from django.db import migrations
 from property.models import Flat, Owner
 
+
 def add_flat_owner(apps, schema_editor):
     Flat = apps.get_model('property', 'Flat')
     Owner = apps.get_model('property', 'Owner')
-    for flat in Flat.objects.all():
-        owner = Owner.objects.filter(owner=flat.owner, owner_phone_pure=flat.owner_phone_pure)
-        owner.flat.add(flat)
-
-
-
+    for owne in Owner.objects.all():
+        flats = Flat.objects.filter(owner=owne.owner, owner_phone_pure=owne.owner_phone_pure)
+        owne.flats.set(flats)
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ('property', '0014_auto_20200505_1237'),
     ]

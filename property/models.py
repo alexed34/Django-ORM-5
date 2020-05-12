@@ -8,7 +8,7 @@ class Flat(models.Model):
     type_building = ((None, 'Неизвестно'), (False, 'Старое'), (True, 'Новостройка'))
     have_balcony = ((None, 'Неизвестно'), (False, 'Без балкона'), (True, 'С балконом'))
 
-    new_building = models.NullBooleanField("Новостройки", choices=type_building)
+    new_building = models.NullBooleanField("Новостройки", choices=type_building, db_index=True)
     created_at = models.DateTimeField("Когда создано объявление", default=timezone.now, db_index=True)
 
     description = models.TextField("Текст объявления", blank=True)
@@ -42,5 +42,5 @@ class Owner(models.Model):
     owner = models.CharField("ФИО владельца", max_length=200, db_index=True)
     owners_phonenumber = models.CharField("Номер владельца", max_length=20)
     owner_phone_pure = PhoneNumberField("Нормализованный номер владельца", blank=True)
-    flat = models.ManyToManyField(Flat, related_name='owners', blank=True, verbose_name="Квартиры в собственности")
+    flats = models.ManyToManyField(Flat, related_name='owners', blank=True, verbose_name="Квартиры в собственности")
 

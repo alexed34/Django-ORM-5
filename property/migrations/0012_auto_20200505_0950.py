@@ -12,7 +12,6 @@ def change_tel(apps, schema_editor):
             flat.owner_phone_pure = phonenumbers.format_number(tel, phonenumbers.PhoneNumberFormat.INTERNATIONAL)
             flat.save()
 
-
 class Migration(migrations.Migration):
     dependencies = [
         ('property', '0011_auto_20200504_1525'),
